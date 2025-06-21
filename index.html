@@ -425,56 +425,33 @@
             backdrop-filter: blur(5px);
         }
         
+        /* New Music Player Styles */
         .music-player {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(44, 62, 80, 0.9);
-            border-radius: 15px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 62, 80, 0.95);
             padding: 15px;
-            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
             z-index: 1000;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .music-player h3 {
-            margin-bottom: 15px;
-            color: var(--off-white);
+        .player-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .music-player h3 i {
-            color: var(--lavender);
-        }
-        
-        .song {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .song-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .song-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         
         .play-pause {
             background: var(--lavender);
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             color: white;
             display: flex;
@@ -489,6 +466,36 @@
             background: var(--royal-purple);
         }
         
+        .next-song {
+            background: none;
+            border: none;
+            color: var(--off-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .next-song:hover {
+            color: var(--sunset-orange);
+            transform: translateX(3px);
+        }
+        
+        .song-info {
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .song-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .song-artist {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Events Section */
         .events-section {
             padding: 60px 0;
         }
@@ -507,6 +514,11 @@
         .events-header h2 {
             font-size: 3rem;
             margin-bottom: 15px;
+        }
+        
+        .events-header p {
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .events-grid {
@@ -558,6 +570,7 @@
             line-height: 1.6;
         }
         
+        /* Modal Menu */
         .modal {
             display: none;
             position: fixed;
@@ -715,9 +728,13 @@
             }
             
             .music-player {
-                width: 250px;
-                right: 15px;
-                bottom: 15px;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .player-controls {
+                order: 2;
             }
         }
     </style>
@@ -760,9 +777,9 @@
             <div class="container about-content">
                 <div class="about-text">
                     <h2>Our Story</h2>
-                    <p>La Sureña was born from a passion for authentic Spanish cuisine and culture. Founded in 2010, we've been bringing the vibrant flavors of Spain to the heart of Brixton for over a decade.</p>
+                    <p>This establishment was born from a passion for authentic Spanish cuisine and culture. Founded in 2010, we've been bringing the vibrant flavors of Spain to the heart of Brixton for over a decade.</p>
                     <p>Our chefs use traditional recipes passed down through generations, combined with the freshest local ingredients to create a dining experience that transports you straight to the streets of Barcelona.</p>
-                    <p>At La Sureña, we believe that great food brings people together. Our warm, inviting atmosphere is the perfect place to gather with friends and family.</p>
+                    <p>We believe that great food brings people together. Our warm, inviting atmosphere is the perfect place to gather with friends and family.</p>
                 </div>
                 <div class="about-image">
                     <div style="height: 400px; background: linear-gradient(to right, #8B4513, #CD853F); display: flex; justify-content: center; align-items: center; color: white; font-size: 2rem;">
@@ -893,14 +910,14 @@
             <div class="container about-content">
                 <div class="about-text">
                     <h2>Our Heritage</h2>
-                    <p>La Sureña brings the authentic taste of Andalusia to London. Founded by Spanish expats in 2010, we've become Brixton's premier destination for genuine Spanish cuisine and culture.</p>
-                    <p>Our executive chef, Miguel Ángel, trained in Seville and brings 25 years of culinary expertise to every dish. We import key ingredients directly from Spain to ensure an authentic experience.</p>
+                    <p>This establishment brings the authentic taste of Andalusia to London. Founded by Spanish expats in 2010, we've become Brixton's premier destination for genuine Spanish cuisine and culture.</p>
+                    <p>Our executive chef trained in Seville and brings decades of culinary expertise to every dish. We import key ingredients directly from Spain to ensure an authentic experience.</p>
                     <p>The restaurant's design reflects the vibrant spirit of southern Spain, with hand-painted tiles, wrought iron details, and warm terracotta tones that create an inviting Mediterranean atmosphere.</p>
                     <a href="#" class="btn" style="margin-top: 20px;">Meet Our Team</a>
                 </div>
                 <div class="about-image">
                     <div style="height: 400px; background: linear-gradient(to right, #7851a9, #2C3E50); display: flex; justify-content: center; align-items: center; color: white; font-size: 2rem;">
-                        Chef & Restaurant Image
+                        Restaurant Interior Image
                     </div>
                 </div>
             </div>
@@ -984,32 +1001,15 @@
             </div>
         </footer>
 
-        <!-- Music Player -->
+        <!-- New Music Player -->
         <div class="music-player">
-            <h3><i class="fas fa-music"></i> La Sureña Playlist</h3>
-            <div class="song" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-                <div class="song-info">
-                    <span>Flamenco Nights</span>
-                </div>
-                <div class="song-controls">
-                    <button class="play-pause"><i class="fas fa-play"></i></button>
-                </div>
+            <div class="song-info">
+                <div class="song-title">Flamenco Nights</div>
+                <div class="song-artist">Spanish Guitar</div>
             </div>
-            <div class="song" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-                <div class="song-info">
-                    <span>Spanish Guitar</span>
-                </div>
-                <div class="song-controls">
-                    <button class="play-pause"><i class="fas fa-play"></i></button>
-                </div>
-            </div>
-            <div class="song" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
-                <div class="song-info">
-                    <span>Barcelona Nights</span>
-                </div>
-                <div class="song-controls">
-                    <button class="play-pause"><i class="fas fa-play"></i></button>
-                </div>
+            <div class="player-controls">
+                <button class="play-pause"><i class="fas fa-play"></i></button>
+                <button class="next-song"><i class="fas fa-forward"></i></button>
             </div>
         </div>
 
@@ -1045,13 +1045,6 @@
                                 </div>
                                 <div class="price">£7.25</div>
                             </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Chorizo al Vino</h4>
-                                    <p>Spicy Spanish sausage cooked in red wine</p>
-                                </div>
-                                <div class="price">£8.50</div>
-                            </div>
                         </div>
                         <div class="menu-category">
                             <h3>Main Courses</h3>
@@ -1069,20 +1062,6 @@
                                 </div>
                                 <div class="price">£12.95</div>
                             </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Pescado a la Sal</h4>
-                                    <p>Sea bass baked in a salt crust</p>
-                                </div>
-                                <div class="price">£16.50</div>
-                            </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Cordero Asado</h4>
-                                    <p>Slow-roasted lamb shoulder with rosemary</p>
-                                </div>
-                                <div class="price">£15.95</div>
-                            </div>
                         </div>
                         <div class="menu-category">
                             <h3>Desserts</h3>
@@ -1092,20 +1071,6 @@
                                     <p>Traditional Spanish doughnuts with chocolate sauce</p>
                                 </div>
                                 <div class="price">£7.50</div>
-                            </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Tarta de Santiago</h4>
-                                    <p>Almond cake dusted with powdered sugar</p>
-                                </div>
-                                <div class="price">£6.95</div>
-                            </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Crema Catalana</h4>
-                                    <p>Spanish version of crème brûlée</p>
-                                </div>
-                                <div class="price">£6.50</div>
                             </div>
                         </div>
                         <div class="menu-category">
@@ -1119,24 +1084,10 @@
                             </div>
                             <div class="menu-item-modal">
                                 <div>
-                                    <h4>Tinto de Verano</h4>
-                                    <p>Red wine with lemon soda</p>
-                                </div>
-                                <div class="price">£5.50</div>
-                            </div>
-                            <div class="menu-item-modal">
-                                <div>
                                     <h4>Rioja (Glass)</h4>
                                     <p>Premium Spanish red wine</p>
                                 </div>
                                 <div class="price">£7.50</div>
-                            </div>
-                            <div class="menu-item-modal">
-                                <div>
-                                    <h4>Sherry Selection</h4>
-                                    <p>Choice of fino, amontillado, or oloroso</p>
-                                </div>
-                                <div class="price">£6.00</div>
                             </div>
                         </div>
                     </div>
@@ -1160,9 +1111,11 @@
             standardBtn.classList.remove('active');
             body.className = 'basic-bg';
             // Stop all audio when switching to basic package
-            document.querySelectorAll('audio').forEach(audio => {
-                audio.pause();
-            });
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+                updatePlayerUI();
+            }
         });
         
         standardBtn.addEventListener('click', () => {
@@ -1285,47 +1238,83 @@
         });
         
         // Music player functionality
-        const songs = document.querySelectorAll('.song');
-        let currentAudio = null;
-        let currentPlayBtn = null;
+        const songs = [
+            {
+                title: "Flamenco Nights",
+                artist: "Spanish Guitar",
+                src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+            },
+            {
+                title: "Barcelona Sunset",
+                artist: "Mediterranean Sounds",
+                src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+            },
+            {
+                title: "Andalusian Dreams",
+                artist: "Flamenco Fusion",
+                src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+            }
+        ];
         
-        songs.forEach(song => {
-            const playBtn = song.querySelector('.play-pause');
-            const audioSrc = song.getAttribute('data-src');
-            const audio = new Audio(audioSrc);
+        let currentSongIndex = 0;
+        let currentAudio = null;
+        const playPauseBtn = document.querySelector('.play-pause');
+        const nextSongBtn = document.querySelector('.next-song');
+        const songTitleEl = document.querySelector('.song-title');
+        const songArtistEl = document.querySelector('.song-artist');
+        
+        function loadSong(index) {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
             
-            playBtn.addEventListener('click', () => {
-                // If this song is already playing, pause it
-                if (audio === currentAudio && !audio.paused) {
-                    audio.pause();
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    return;
-                }
-                
-                // Pause any currently playing audio
-                if (currentAudio) {
-                    currentAudio.pause();
-                    if (currentPlayBtn) {
-                        currentPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    }
-                }
-                
-                // Play the selected song
-                audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                
-                // Update current audio and button references
-                currentAudio = audio;
-                currentPlayBtn = playBtn;
-                
-                // When song ends, reset button
-                audio.addEventListener('ended', () => {
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    currentAudio = null;
-                    currentPlayBtn = null;
-                });
-            });
-        });
+            currentSongIndex = index;
+            const song = songs[currentSongIndex];
+            
+            songTitleEl.textContent = song.title;
+            songArtistEl.textContent = song.artist;
+            
+            currentAudio = new Audio(song.src);
+            currentAudio.addEventListener('ended', nextSong);
+            
+            updatePlayerUI();
+        }
+        
+        function updatePlayerUI() {
+            if (currentAudio && !currentAudio.paused) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+        
+        function playPauseSong() {
+            if (!currentAudio) {
+                loadSong(currentSongIndex);
+            }
+            
+            if (currentAudio.paused) {
+                currentAudio.play();
+            } else {
+                currentAudio.pause();
+            }
+            
+            updatePlayerUI();
+        }
+        
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            if (!currentAudio.paused) {
+                currentAudio.play();
+            }
+        }
+        
+        playPauseBtn.addEventListener('click', playPauseSong);
+        nextSongBtn.addEventListener('click', nextSong);
+        
+        // Load first song
+        loadSong(0);
         
         // Events data and rendering
         const eventsData = [
@@ -1344,7 +1333,7 @@
             {
                 title: "Paella Cooking Class",
                 date: "Second Saturday of the Month",
-                description: "Learn to make authentic Valencian paella with Chef Miguel. Includes lunch and recipes to take home.",
+                description: "Learn to make authentic Valencian paella with our chef. Includes lunch and recipes to take home.",
                 image: "linear-gradient(to right, #85CDCA, #F4A460)"
             },
             {
